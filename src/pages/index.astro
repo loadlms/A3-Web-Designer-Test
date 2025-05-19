@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+
+const template1Pages = await getCollection('template1');
+const template2Pages = await getCollection('template2');
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-16">
+      <header class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Template Hub</h1>
+        <p class="text-xl text-gray-600">Acesse as páginas dos templates abaixo</p>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Template 1 Section -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Template 1</h2>
+          <p class="text-gray-600 mb-6">Acesse as páginas do Template 1 (Business Solutions)</p>
+          
+          <div class="space-y-4">
+            <div class="flex items-center justify-between bg-gray-50 p-4 rounded-lg">
+              <span class="text-gray-700">Total de páginas:</span>
+              <span class="font-semibold">{template1Pages.length}</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <a href="/paginatemplate1/1" class="text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Primeira Página
+              </a>
+              <a href="/paginatemplate1/1000" class="text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Última Página
+              </a>
+            </div>
+
+            <div class="mt-6">
+              <label for="template1-page" class="block text-sm font-medium text-gray-700 mb-2">Acessar página específica:</label>
+              <div class="flex gap-2">
+                <input type="number" id="template1-page" min="1" max="1000" placeholder="Número da página" 
+                  class="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <button id="template1-button" 
+                  class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">
+                  Ir
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 2 Section -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Template 2</h2>
+          <p class="text-gray-600 mb-6">Acesse as páginas do Template 2 (Innovative Solutions)</p>
+          
+          <div class="space-y-4">
+            <div class="flex items-center justify-between bg-gray-50 p-4 rounded-lg">
+              <span class="text-gray-700">Total de páginas:</span>
+              <span class="font-semibold">{template2Pages.length}</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <a href="/paginatemplate2/1" class="text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Primeira Página
+              </a>
+              <a href="/paginatemplate2/1000" class="text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Última Página
+              </a>
+            </div>
+
+            <div class="mt-6">
+              <label for="template2-page" class="block text-sm font-medium text-gray-700 mb-2">Acessar página específica:</label>
+              <div class="flex gap-2">
+                <input type="number" id="template2-page" min="1" max="1000" placeholder="Número da página" 
+                  class="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <button id="template2-button" 
+                  class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">
+                  Ir
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Função para validar e navegar para uma página
+      function navigateToPage(templateNumber, pageNum) {
+        if (!pageNum || isNaN(pageNum)) {
+          alert('Por favor, insira um número válido');
+          return;
+        }
+
+        const page = parseInt(pageNum);
+        if (page < 1 || page > 1000) {
+          alert('Por favor, insira um número entre 1 e 1000');
+          return;
+        }
+
+        window.location.href = `/paginatemplate${templateNumber}/${page}`;
+      }
+
+      // Função para configurar os event listeners
+      function setupTemplateNavigation(templateNumber) {
+        const button = document.getElementById(`template${templateNumber}-button`);
+        const input = document.getElementById(`template${templateNumber}-page`);
+
+        if (!button || !input || !(input instanceof HTMLInputElement)) {
+          console.error(`Elementos não encontrados para o template ${templateNumber}`);
+          return;
+        }
+
+        // Event listener para o botão
+        button.addEventListener('click', () => {
+          navigateToPage(templateNumber, input.value);
+        });
+
+        // Event listener para a tecla Enter
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            navigateToPage(templateNumber, input.value);
+          }
+        });
+      }
+
+      // Configurar navegação para ambos os templates
+      document.addEventListener('DOMContentLoaded', () => {
+        setupTemplateNavigation(1);
+        setupTemplateNavigation(2);
+      });
+    </script>
+  </body>
+</html> 

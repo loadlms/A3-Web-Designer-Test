@@ -1,0 +1,59 @@
+/* Template 1 Styles */
+.template1 {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.template1 .header {
+  background: #fff;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.template1 .main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.template1 .hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.template1 .hero h1 {
+  font-size: 2.5em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Template 2 Styles */
+.template2 {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  color: #444;
+}
+
+.template2 .header {
+  background: #f8f9fa;
+  padding: 15px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.template2 .main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 15px;
+}
+
+.template2 .hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.template2 .hero h1 {
+  font-size: 2.2em;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+} 

@@ -1,0 +1,19 @@
+---
+import Template2Layout from '../../layouts/Template2Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('template2');
+  return pages.map(page => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<Template2Layout title={page.data.title}>
+  <Content />
+</Template2Layout> 
