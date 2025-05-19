@@ -1,22 +1,22 @@
-# A3 Web Designer Test
+# Teste de Web Designer A3
 
-This project uses Astro and TinaCMS to create and manage dynamic pages based on templates.
+Este projeto utiliza Astro e TinaCMS para criar e gerenciar páginas dinâmicas baseadas em modelos.
 
-## Setup
+## Configuração
 
-1. Install dependencies:
+1. Instale as dependências:
 ```bash
 npm install
 ```
 
-2. Set up environment variables:
-Create a `.env` file in the root directory with:
+2. Configure as variáveis de ambiente:
+Crie um arquivo `.env` no diretório raiz com:
 ```
-NEXT_PUBLIC_TINA_CLIENT_ID=your_client_id
-TINA_TOKEN=your_token
+NEXT_PUBLIC_TINA_CLIENT_ID=seu_client_id
+TINA_TOKEN=seu_token
 ```
 
-3. Generate the initial pages:
+3. Gere as páginas iniciais:
 ```bash
 node scripts/generate-pages.js
 ```
@@ -26,26 +26,26 @@ node scripts/generate-pages.js
 npx astro sync
 ```
 
-5. Start the development server:
+5. Inicie o servidor de desenvolvimento:
 ```bash
 npm run dev
 ```
 
-6. Access the TinaCMS admin interface at `http://localhost:3000/admin`
+6. Acesse a interface de administração do TinaCMS em `http://localhost:3000/admin`
 
-## Project Structure
+## Estrutura do Projeto
 
-- `src/content/template1/` - Content for template 1 pages
-- `src/content/template2/` - Content for template 2 pages
-- `src/layouts/` - Layout components for each template
-- `src/pages/` - Dynamic routes for the templates
-- `tina/` - TinaCMS configuration
-- `scripts/` - Utility scripts for page generation
+- `src/content/template1/` - Conteúdo para as páginas do modelo 1
+- `src/content/template2/` - Conteúdo para as páginas do modelo 2
+- `src/layouts/` - Componentes de layout para cada modelo
+- `src/pages/` - Rotas dinâmicas para os modelos
+- `tina/` - Configuração do TinaCMS
+- `scripts/` - Scripts utilitários para geração de páginas
 
-## Features
+## Funcionalidades
 
-- Two distinct templates with different layouts
-- 1000 variations of each template
-- Dynamic routing with slugs
-- Content management through TinaCMS
-- Faker.js integration for generating unique content 
+- Dois modelos distintos com layouts diferentes
+- 1000 variações de cada modelo
+- Roteamento dinâmico com slugs
+- Gerenciamento de conteúdo através do TinaCMS
+- Integração com Faker.js para geração de conteúdo único
